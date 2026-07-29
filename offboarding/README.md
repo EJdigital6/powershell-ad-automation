@@ -1,28 +1,28 @@
 # AD Offboarding
 
-Disables a leaver's Active Directory account from a single command — the
+Disables a leaver's Active Directory account from a single command the
 first and most urgent step when an employee leaves. Done manually,
 offboarding is a checklist that can be missed or half-finished, leaving
 security risks or unused accounts active.
 
 Built and tested in an isolated Hyper-V lab (Windows Server 2022 domain
-controller). Never tested against, or intended for, unreviewed production use.
+controller). Never tested against, or intended for unreviewed production use.
 
 ## Features
 
-- **Input validation** — the username parameter is mandatory, and the
+- **Input validation**: the username parameter is mandatory, and the
   script checks the account exists before doing anything. An invalid or
   misspelled username stops the script with nothing changed.
-- **Disable, not delete** — disabling preserves the user's SID,
+- **Disable, not delete**: disabling preserves the user's SID,
   permissions, and data for recovery, auditing, or retention requirements.
   Deletion is a policy decision for much later, not day one.
-- **Fail-safe abort** — if the disable operation fails, the script stops
+- **Fail-safe abort**: if the disable operation fails, the script stops
   immediately rather than continuing with an incomplete offboarding. A
   half-processed leaver should never be left in an unlocked state.
-- **Audit logging** — every run writes its own timestamped log file, named
+- **Audit logging**: every run writes its own timestamped log file, named
   per user, recording each action and abort — so there's always an answer
   to "what was done to this account, and when?"
-- **Dry-run mode** — supports PowerShell's standard `-WhatIf` switch to
+- **Dry-run mode**: supports PowerShell's standard `-WhatIf` switch to
   preview every action without touching AD.
 
 ## Usage
@@ -50,10 +50,10 @@ Then the real run:
 
 ## Known limitations
 
-- The current version disables the account only — password reset, group
+- The current version disables the account only password reset, group
   membership export and removal, and moving the account to a Leavers OU
   are planned next.
-- No ticket/reason parameter yet — a future version should stamp the
+- No ticket/reason parameter yet, a future version should stamp the
   account description with the date and reference for the offboarding.
 - The account is left in its original OU, so disabled leavers sit
   alongside active users until moved manually.
