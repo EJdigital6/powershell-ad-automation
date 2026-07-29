@@ -1,4 +1,4 @@
-AD Offboarding
+# AD Offboarding
 
 Disables a leaver's Active Directory account from a single command — the
 first and most urgent step when an employee leaves. Done manually,
